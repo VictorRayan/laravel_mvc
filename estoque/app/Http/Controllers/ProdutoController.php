@@ -3,7 +3,8 @@
     namespace App\Http\Controllers;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+    use Symfony\Component\HttpFoundation\RequestStack;
+    use App\Http\Requests\ProdutoRequest;
 
     class ProdutoController extends Controller{
 
@@ -38,7 +39,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
             return view('produto.novo_prod');
         }
 
-        public function adiciona(Request $request){
+        public function adiciona(ProdutoRequest $request){
             
             $nome = $request->post('inputProdName');
             $descricao = $request->post('inputProdDesc');
@@ -87,7 +88,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
                 ->with('id', $id);
         }
 
-        public function makeUpdate(Request $request){
+        public function makeUpdate(ProdutoRequest $request){
             $id = $request->route('id');
             $nome = $request->post('inputProdName');
             $quantidade = $request->post('inputProdQuant');
